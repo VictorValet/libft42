@@ -6,15 +6,18 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:41:25 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 14:35:24 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/07/14 16:56:06 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <limits.h>
+# include <sys/syslimits.h>
 # include <stdlib.h>
 # include <stdarg.h>
+# include <unistd.h>
 
 # ifndef SIZE_MAX
 #  define SIZE_MAX 65535

@@ -6,13 +6,11 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:56:19 by vvalet            #+#    #+#             */
-/*   Updated: 2023/06/13 11:06:56 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/07/14 16:55:13 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <limits.h>
-#include <unistd.h>
 
 char	*append_part(char *line, char *buffer, ssize_t *bytes, int fd)
 {
