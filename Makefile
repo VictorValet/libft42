@@ -58,8 +58,8 @@ SRCS	=	ft_atoi.c \
 			ft_printf/ft_putstr_value_fd.c \
 			ft_printf/ft_putui_fd.c \
 			ft_printf/ft_putui_hex_fd.c \
-			ft_printfd/ft_convertfd.c \
-			ft_printfd/ft_printfd.c \
+			ft_fprintf/ft_convertfd.c \
+			ft_fprintf/ft_fprintf.c \
 			get_next_line/get_next_line_utils.c \
 			get_next_line/get_next_line.c \
 

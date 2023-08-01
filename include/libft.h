@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:41:25 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 16:56:06 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/08/01 10:00:42 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ int				ft_putstr_value_fd(char *s, int fd);
 int				ft_putui_fd(unsigned int n, int fd);
 int				ft_putui_hex_fd(unsigned int n, int ltrs, int fd);
 
-/* Ft_printfd */
-int				ft_printfd(int fd, const char *s, ...);
+/* Ft_fprintf */
+int				ft_fprintf(int fd, const char *s, ...);
 int				ft_convertfd(va_list list, char key, int fd);
 
 /* Get_next_line */

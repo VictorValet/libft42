@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printfd.c                                       :+:      :+:    :+:   */
+/*   ft_fprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:54:32 by vvalet            #+#    #+#             */
-/*   Updated: 2023/06/14 14:49:05 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/08/01 09:59:30 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <unistd.h>
 
-int	ft_printfd(int fd, const char *s, ...)
+int	ft_fprintf(int fd, const char *s, ...)
 {
 	va_list	list;
 	size_t	index;
