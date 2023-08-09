@@ -49,6 +49,8 @@ SRCS	=	ft_atoi.c \
 			ft_arlen.c \
 			ft_abs.c \
 			ft_char_count.c \
+			ft_in_set_char.c \
+			ft_in_set_str.c \
 			ft_sign.c \
 			ft_printf/ft_convert.c \
 			ft_printf/ft_printf.c \
