@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:41:25 by vvalet            #+#    #+#             */
-/*   Updated: 2023/08/09 12:15:30 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/08/09 12:20:51 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,8 @@ void			ft_arclear(char **ar);
 size_t			ft_arlen(char **ar);
 size_t			ft_abs(int nbr);
 size_t			ft_char_count(char *str, char c);
-int				in_set_char(char c, char *set);
-int				in_set_str(char *s, char **set);
+int				ft_in_set_char(char c, char *set);
+int				ft_in_set_str(char *s, char **set);
 int				ft_sign(int nbr);
 
 /* Ft_printf */

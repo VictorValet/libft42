@@ -6,13 +6,13 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:10:47 by vvalet            #+#    #+#             */
-/*   Updated: 2023/08/09 12:14:52 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/08/09 12:20:32 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	in_set_str(char *s, char **set)
+int	ft_in_set_str(char *s, char **set)
 {
 	if (s == NULL || set == NULL || *set == NULL)
 		return (FALSE);
