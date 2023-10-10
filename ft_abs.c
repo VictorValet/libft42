@@ -6,11 +6,11 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 09:51:59 by vvalet            #+#    #+#             */
-/*   Updated: 2023/06/06 14:06:14 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/09 13:11:30 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 size_t	ft_abs(int nbr)
 {

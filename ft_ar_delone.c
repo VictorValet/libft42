@@ -1,28 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_arclear.c                                       :+:      :+:    :+:   */
+/*   ft_ar_delone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 15:18:44 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 13:33:07 by vvalet           ###   ########.fr       */
+/*   Created: 2023/08/09 13:08:44 by vvalet            #+#    #+#             */
+/*   Updated: 2023/10/09 13:19:09 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_arclear(char **ar)
+int	ft_ar_delone(char ***ar, size_t index)
 {
+	size_t	size;
+	char	**new_ar;
 	size_t	i;
+	int		j;
 
-	if (ar == NULL)
-		return ;
+	size = ft_ar_len(*ar);
+	new_ar = (char **)ft_calloc(size, sizeof(char *));
+	if (new_ar == NULL)
+		return (1);
 	i = 0;
-	while (ar[i])
+	j = 0;
+	while (i <= size)
 	{
-		free(ar[i]);
+		if (i != index)
+			new_ar[i + j] = (*ar)[i];
+		else
+		{
+			j--;
+			free((*ar)[i]);
+		}
 		i++;
 	}
-	free(ar);
+	free(*ar);
+	*ar = new_ar;
+	return (0);
 }

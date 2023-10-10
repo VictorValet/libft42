@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 11:14:36 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 16:05:21 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:19:45 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = 0;
 	else if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
-	substr = (char *)malloc(len + 1);
+	substr = (char *)ft_calloc(1, len + 1);
 	if (!substr)
 		return (NULL);
 	index = 0;

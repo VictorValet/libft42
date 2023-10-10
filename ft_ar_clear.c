@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_ar_clear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 14:22:53 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/09 13:17:16 by vvalet           ###   ########.fr       */
+/*   Created: 2023/06/07 15:18:44 by vvalet            #+#    #+#             */
+/*   Updated: 2023/10/09 13:18:29 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_ar_clear(char ***ar)
 {
-	char	*ptr;
+	size_t	i;
 
-	ptr = (char *)s;
-	while (n--)
-		ptr[n] = 0;
+	if (*ar == NULL)
+		return ;
+	i = 0;
+	while ((*ar)[i])
+	{
+		free((*ar)[i]);
+		(*ar)[i] = NULL;
+		i++;
+	}
+	free(*ar);
+	*ar = NULL;
 }

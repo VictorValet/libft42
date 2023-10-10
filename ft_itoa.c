@@ -6,26 +6,11 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:20:46 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 15:02:47 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:17:40 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static int	nb_len(int n)
-{
-	int	len;
-
-	len = 1;
-	if (n < 0)
-		len++;
-	while (n > 9 || n < -9)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
-}
+#include "libft.h"
 
 char	*ft_itoa(int n)
 {
@@ -33,11 +18,11 @@ char	*ft_itoa(int n)
 	int		neg;
 	char	*a;
 
-	index = nb_len(n);
+	index = ft_nb_len(n);
 	neg = 1;
 	if (n < 0)
 		neg *= -1;
-	a = (char *)malloc(nb_len(n) + 1);
+	a = (char *)ft_calloc(1, ft_nb_len(n) + 1);
 	if (!a)
 		return (NULL);
 	a[index] = 0;

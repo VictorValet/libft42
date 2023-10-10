@@ -6,11 +6,11 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 11:43:18 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 13:47:53 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/09 13:17:52 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 size_t	ft_char_count(char *str, char c)
 {

@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_ar_tolist.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 14:22:53 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/09 13:17:16 by vvalet           ###   ########.fr       */
+/*   Created: 2023/08/08 14:47:37 by vvalet            #+#    #+#             */
+/*   Updated: 2023/10/09 13:18:39 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+t_list	*ft_ar_tolist(char **ar)
 {
-	char	*ptr;
+	t_list	*list;
+	t_list	*instance;
 
-	ptr = (char *)s;
-	while (n--)
-		ptr[n] = 0;
+	list = ft_lstnew(*ar);
+	ar++;
+	while (*ar)
+	{
+		instance = ft_lstnew(*ar);
+		if (instance == NULL)
+		{
+			ft_lstclear(&list, &free);
+			return (NULL);
+		}
+		ft_lstadd_back(&list, instance);
+		ar++;
+	}
+	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:43:43 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 16:05:50 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:19:19 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*ft_strtrim(char const *s, char const *set)
 		return (ft_strdup(""));
 	else
 	{
-		str = (char *)malloc((end - start) + 2);
+		str = (char *)ft_calloc(1, (end - start) + 2);
 		if (!str)
 			return (NULL);
 		ft_strlcpy(str, start, (end - start) + 2);

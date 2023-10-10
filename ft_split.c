@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:39:21 by vvalet            #+#    #+#             */
-/*   Updated: 2023/06/20 09:42:22 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:18:52 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	**ft_split(char const *s, char c)
 
 	if (!s)
 		return (0);
-	split = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	split = (char **)ft_calloc(1, (count_words(s, c) + 1) * sizeof(char *));
 	if (split == NULL)
 		return (0);
 	split = fill_array((char *)s, c, split);

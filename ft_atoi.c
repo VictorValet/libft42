@@ -6,11 +6,11 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 14:08:00 by vvalet            #+#    #+#             */
-/*   Updated: 2023/06/06 14:06:25 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/09 13:17:12 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 int	ft_atoi(const char *str)
 {

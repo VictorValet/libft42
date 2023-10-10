@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_ar_len.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 14:22:53 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/09 13:17:16 by vvalet           ###   ########.fr       */
+/*   Created: 2023/06/01 11:59:57 by vvalet            #+#    #+#             */
+/*   Updated: 2023/10/09 13:18:35 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+size_t	ft_ar_len(char **ar)
 {
-	char	*ptr;
+	size_t	size;
 
-	ptr = (char *)s;
-	while (n--)
-		ptr[n] = 0;
+	if (ar == NULL)
+		return (0);
+	size = 0;
+	while (ar[size])
+		size++;
+	return (size);
 }

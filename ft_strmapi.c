@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 17:42:43 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 15:29:54 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/03 15:19:38 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (!s)
 		return (NULL);
-	str = (char *)malloc(ft_strlen(s) + 1);
+	str = (char *)ft_calloc(1, ft_strlen(s) + 1);
 	if (!str)
 		return (NULL);
 	i = 0;

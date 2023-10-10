@@ -6,99 +6,81 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:56:19 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 16:55:13 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/10 11:10:33 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*append_part(char *line, char *buffer, ssize_t *bytes, int fd)
+int	new_buffer(int fd, char *buffer, char **line, int *i)
 {
-	char	*temp;
+	int		bytes_read;
+	char	*temp_line;
 
-	temp = ft_strjoin_gnl(line, buffer);
-	ft_bzero_gnl(buffer, BUFFER_SIZE);
-	*bytes = read(fd, buffer, BUFFER_SIZE);
-	if (*bytes == -1)
+	bytes_read = read(fd, buffer, BUFFER_SIZE);
+	if (bytes_read <= 0)
 	{
-		if (line)
-			free(line);
-		if (temp)
-			free(temp);
-		ft_bzero_gnl(buffer, BUFFER_SIZE);
-		return (NULL);
+		free(*line);
+		*line = NULL;
+		return (1);
 	}
-	if (line)
-		free(line);
-	return (temp);
+	buffer[bytes_read] = 0;
+	temp_line = (char *)ft_calloc(ft_strlen(*line) + BUFFER_SIZE, sizeof(char));
+	if (temp_line == NULL)
+	{
+		free(*line);
+		*line = NULL;
+		return (1);
+	}
+	ft_strlcpy(temp_line, *line, ft_strlen(*line) + 1);
+	free(*line);
+	*line = temp_line;
+	*i = 0;
+	return (0);
 }
 
-char	*append_end(char *line, char *buffer, ssize_t bytes)
+char	*find_line(int fd, char *buffer, int *i)
 {
-	char	*end;
-	char	*temp;
-
-	if (ft_strchr_gnl(buffer, '\n'))
-		end = ft_substr_gnl(buffer, 0,
-				ft_strchr_gnl(buffer, '\n') - buffer + 1);
-	else
-		end = ft_substr_gnl(buffer, 0, bytes);
-	if (!end)
-	{
-		free(line);
-		return (NULL);
-	}
-	temp = ft_strjoin_gnl(line, end);
-	free(end);
-	if (line)
-		free(line);
-	return (temp);
-}
-
-char	*find_line(int fd, char *buffer, ssize_t bytes)
-{	
+	int		j;
 	char	*line;
 
-	line = 0;
-	while (!ft_strchr_gnl(buffer, '\n'))
+	j = 0;
+	if (buffer[0] == 0)
+		return (NULL);
+	line = (char *)ft_calloc(BUFFER_SIZE, sizeof(char));
+	while (line != NULL)
 	{
-		line = append_part(line, buffer, &bytes, fd);
-		if (!line)
-			return (NULL);
-		if (bytes < BUFFER_SIZE)
+		if ((*i == BUFFER_SIZE || buffer[*i] == 0) 
+			&& new_buffer(fd, buffer, &line, i) == 1)
 			break ;
+		line[j] = buffer[*i];
+		(*i)++;
+		if (line[j] == '\n')
+			break ;
+		j++;
 	}
-	line = append_end(line, buffer, bytes);
 	return (line);
-}
-
-void	clean_buffer(char buffer[BUFFER_SIZE + 1])
-{
-	char	*ptr;
-	size_t	index;
-
-	ptr = ft_strchr_gnl(buffer, '\n');
-	index = 0;
-	while (ptr && ptr[index] && ptr[index + 1])
-	{
-		buffer[index] = ptr[index + 1];
-		index++;
-	}
-	ft_bzero_gnl(&buffer[index], BUFFER_SIZE - index);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[OPEN_MAX][BUFFER_SIZE + 1] = {0};
-	char		*line;
-	ssize_t		bytes;
+	static char		buffer[OPEN_MAX][BUFFER_SIZE + 1] = {{0}};		
+	char			*line;
+	int				bytes_read;
+	int				index;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE < 1)
+	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE < 1)
 		return (NULL);
-	bytes = 0;
 	if (buffer[fd][0] == 0)
-		bytes = read(fd, buffer[fd], BUFFER_SIZE);
-	line = find_line(fd, buffer[fd], bytes);
-	clean_buffer(buffer[fd]);
+	{
+		bytes_read = read(fd, buffer[fd], BUFFER_SIZE);
+		if (bytes_read <= 0)
+			return (NULL);
+		buffer[fd][BUFFER_SIZE] = 0;
+	}
+	index = 0;
+	line = find_line(fd, buffer[fd], &index);
+	ft_strlcpy(buffer[fd], &buffer[fd][index],
+		ft_strlen(&buffer[fd][index]) + 1);
 	return (line);
 }

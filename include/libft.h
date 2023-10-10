@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:41:25 by vvalet            #+#    #+#             */
-/*   Updated: 2023/08/09 12:20:51 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/10 09:27:34 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 
 # include <limits.h>
-# include <sys/syslimits.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
@@ -72,6 +71,7 @@ char			*ft_strrchr(const char *s, int c);
 char			*ft_strdup(const char *s);
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strjoins(size_t str_nbr, ...);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlen(const char *s);
@@ -95,14 +95,23 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
 int				ft_lstsize(t_list *lst);
 
-/* Libft Personal */
-void			ft_arclear(char **ar);
-size_t			ft_arlen(char **ar);
+/* Libft Personal: Arrays */
+int				ft_ar_addone(char ***ar, char *s);
+int				ft_ar_delone(char ***ar, size_t index);
+int				ft_ar_replace(char **ar, size_t index, char *s);
+void			ft_ar_clear(char ***ar);
+char			**ft_ar_dup(char **ar);
+size_t			ft_ar_len(char **ar);
+t_list			*ft_ar_tolist(char **ar);
+
+/* Libft Personal: Others */
 size_t			ft_abs(int nbr);
+int				ft_sign(int nbr);
+int				ft_nb_len(int n);
+int				ft_isspace(char c);
 size_t			ft_char_count(char *str, char c);
 int				ft_in_set_char(char c, char *set);
 int				ft_in_set_str(char *s, char **set);
-int				ft_sign(int nbr);
 
 /* Ft_printf */
 int				ft_printf(const char *s, ...);

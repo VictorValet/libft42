@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_ar_replace.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 14:22:53 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/09 13:17:16 by vvalet           ###   ########.fr       */
+/*   Created: 2023/08/09 13:08:44 by vvalet            #+#    #+#             */
+/*   Updated: 2023/10/09 13:16:58 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+int	ft_ar_replace(char **ar, size_t index, char *s)
 {
-	char	*ptr;
+	char	*new_str;
 
-	ptr = (char *)s;
-	while (n--)
-		ptr[n] = 0;
+	new_str = ft_strdup(s);
+	if (new_str == NULL)
+		return (1);
+	free(ar[index]);
+	ar[index] = new_str;
+	return (0);
 }

@@ -1,6 +1,36 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/02 18:36:20 by aminjauw          #+#    #+#              #
+#    Updated: 2023/10/09 16:48:41 by vvalet           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	=	libft.a
 
+#--------------------------COLORS------------------------------------------------
+
+RED			=	\x1b[31m
+
+YELLOW		=	\x1b[33m
+
+GREEN		=	\x1b[32m
+
+WHI			=	\x1b[0m
+
+BOLD		= 	\x1b[1m
+
+BOLD_OFF	=	\x1b[21m
+																				
+#--------------------------PATH-------------------------------------------------
+
 INCLUDE	=	include/
+
+#--------------------------SOURCES FILES----------------------------------------
 
 SRCS	=	ft_atoi.c \
 			ft_bzero.c \
@@ -10,6 +40,7 @@ SRCS	=	ft_atoi.c \
 			ft_isascii.c \
 			ft_isdigit.c \
 			ft_isprint.c \
+			ft_isspace.c \
 			ft_itoa.c \
 			ft_memchr.c \
 			ft_memcmp.c \
@@ -25,6 +56,7 @@ SRCS	=	ft_atoi.c \
 			ft_strdup.c \
 			ft_striteri.c \
 			ft_strjoin.c \
+			ft_strjoins.c \
 			ft_strlcat.c \
 			ft_strlcpy.c \
 			ft_strlen.c \
@@ -45,13 +77,19 @@ SRCS	=	ft_atoi.c \
 			ft_lstmap_bonus.c \
 			ft_lstnew_bonus.c \
 			ft_lstsize_bonus.c \
-			ft_arclear.c \
-			ft_arlen.c \
+			ft_ar_len.c \
+			ft_ar_dup.c \
+			ft_ar_addone.c \
+			ft_ar_delone.c \
+			ft_ar_replace.c \
+			ft_ar_tolist.c \
+			ft_ar_clear.c \
 			ft_abs.c \
 			ft_char_count.c \
 			ft_in_set_char.c \
 			ft_in_set_str.c \
 			ft_sign.c \
+			ft_nb_len.c\
 			ft_printf/ft_convert.c \
 			ft_printf/ft_printf.c \
 			ft_printf/ft_putchar_value_fd.c \
@@ -63,23 +101,42 @@ SRCS	=	ft_atoi.c \
 			ft_fprintf/ft_convertfd.c \
 			ft_fprintf/ft_fprintf.c \
 			get_next_line/get_next_line_utils.c \
-			get_next_line/get_next_line.c \
+			get_next_line/get_next_line.c
 
-OBJS= 		${SRCS:.c=.o}
+#--------------------------COMPILATION------------------------------------------
 
-CC= 		cc -Wall -Wextra -Werror -I${INCLUDE}
+CC		=	cc
+
+FLAGS	=	-Wall -Wextra -Werror -g
+
+#--------------------------OBJECTS----------------------------------------------
+
+OBJS	= 	${SRCS:.c=.o}
+
+#--------------------------RULES-----------------------------------------------
 
 all:		${NAME}
 
+%.o : %.c
+	@printf "$(YELLOW)Generating $(NAME) objects... %-33.33s\r$(WHI)" $@
+	@$(CC) $(FLAGS) -c -I$(INCLUDE) $< -o $@
+
 ${NAME}:	${OBJS}
-		ar rcs ${NAME} ${OBJS}
+	@printf "$(YELLOW)Linking %-33.33s\r$(WHI)" $@
+	@ar rcs ${NAME} ${OBJS}
 
 clean:
-		rm -f ${OBJS}
+	@echo "$(RED)Deleting libft objects...$(WHI)"
+	@rm -f ${OBJS}
 
-fclean:		clean
-		rm -f ${NAME}
+fclean:
+	@rm -f ${OBJS}
+	@echo "$(RED)Deleting libft executables...$(WHI)"
+	@rm -f ${NAME}
 
-re:			fclean all
+test: all
+	@$(CC) $(FLAGS) $(NAME) main.c
+
+re:	fclean all
 
 .PHONY: all clean fclean re bonus

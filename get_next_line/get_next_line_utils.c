@@ -6,101 +6,58 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 16:19:55 by vvalet            #+#    #+#             */
-/*   Updated: 2023/07/14 15:03:34 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/09 15:22:35 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlen_gnl(const char *s)
+void	ft_bzero(void *s, size_t n)
+{
+	char	*ptr;
+
+	ptr = (char *)s;
+	while (n--)
+		ptr[n] = 0;
+}
+
+void	*ft_calloc(size_t count, size_t size)
+{
+	char	*ptr;
+
+	if (count && size && (count > SIZE_MAX / size || size > SIZE_MAX / count))
+		return (NULL);
+	ptr = (char *)malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}
+
+size_t	ft_strlen(const char *s)
 {
 	size_t	size;
 
-	if (!s)
-		return (0);
 	size = 0;
 	while (s[size])
 		size++;
 	return (size);
 }
 
-char	*ft_strchr_gnl(const char *s, int c)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	*ptr;
+	size_t	i;
 	size_t	len;
 
-	len = ft_strlen_gnl(s);
-	ptr = (char *)s;
-	while (ptr != (char *)s + len + 1)
+	i = 0;
+	len = ft_strlen(src);
+	if (dstsize == 0)
+		return (len);
+	while (src[i] && i < dstsize - 1)
 	{
-		if (*ptr == (char)c)
-			return (ptr);
-		ptr++;
+		dst[i] = src[i];
+		i++;
 	}
-	return (NULL);
-}
-
-char	*ft_strjoin_gnl(char const *s1, char const *s2)
-{
-	char		*joined;
-	char		*ptr;
-	size_t		index;
-	size_t		size;
-
-	size = ft_strlen_gnl(s1) + ft_strlen_gnl(s2);
-	if (size == 0)
-		return (NULL);
-	joined = (char *)malloc(size + 1 * sizeof(char));
-	if (!joined)
-		return (NULL);
-	index = 0;
-	ptr = (char *)s1;
-	if (!s1)
-		ptr = (char *)s2;
-	while (index < size)
-	{
-		if (*ptr == '\0')
-			ptr = (char *)s2;
-		joined[index] = *ptr;
-		ptr++;
-		index++;
-	}
-	joined[size] = '\0';
-	return (joined);
-}
-
-char	*ft_substr_gnl(char const *s, unsigned int start, size_t len)
-{
-	char	*substr;
-	size_t	index;
-
-	if (!s)
-		return (NULL);
-	if (start >= ft_strlen_gnl(s))
-		len = 0;
-	else if (len > ft_strlen_gnl(s) - start)
-		len = ft_strlen_gnl(s) - start;
-	substr = (char *)malloc(len + 1);
-	if (!substr)
-		return (NULL);
-	index = 0;
-	while (index < len && s[start + index])
-	{
-		substr[index] = s[start + index];
-		index++;
-	}
-	substr[index] = '\0';
-	return (substr);
-}
-
-void	ft_bzero_gnl(void *s, size_t n)
-{
-	char	*ptr;
-
-	ptr = (char *)s;
-	while (n--)
-	{
-		*ptr = 0;
-		ptr++;
-	}
+	dst[i] = 0;
+	return (len);
 }
