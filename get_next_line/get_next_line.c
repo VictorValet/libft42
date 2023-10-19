@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:56:19 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/10 11:10:33 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/19 15:49:50 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ int	new_buffer(int fd, char *buffer, char **line, int *i)
 	char	*temp_line;
 
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
-	if (bytes_read <= 0)
+	if (bytes_read == 0)
+		return (0);
+	if (bytes_read < 0)
 	{
 		free(*line);
 		*line = NULL;
-		return (1);
+		return (bytes_read != 0);
 	}
 	buffer[bytes_read] = 0;
 	temp_line = (char *)ft_calloc(ft_strlen(*line) + BUFFER_SIZE, sizeof(char));
@@ -55,7 +57,7 @@ char	*find_line(int fd, char *buffer, int *i)
 			break ;
 		line[j] = buffer[*i];
 		(*i)++;
-		if (line[j] == '\n')
+		if (line[j] == '\n' || line[j] == 0)
 			break ;
 		j++;
 	}
@@ -82,5 +84,6 @@ char	*get_next_line(int fd)
 	line = find_line(fd, buffer[fd], &index);
 	ft_strlcpy(buffer[fd], &buffer[fd][index],
 		ft_strlen(&buffer[fd][index]) + 1);
+	ft_bzero(&buffer[fd][ft_strlen(buffer[fd])], BUFFER_SIZE - index);
 	return (line);
 }

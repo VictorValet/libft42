@@ -6,11 +6,10 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 15:54:32 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/09 13:18:00 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/10 15:55:21 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "libft.h"
 
 int	ft_printf(const char *s, ...)

@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:41:25 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/10 09:27:34 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/10 16:12:17 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@
 # if BUFFER_SIZE < 0
 #  undef BUFFER_SIZE 
 #  define BUFFER_SIZE 0
+# endif
+
+# ifndef LC_NUMERIC
+#  define LC_NUMERIC 56
 # endif
 
 # define HEX_MIN "0123456789abcdef"

@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/09 12:10:47 by vvalet            #+#    #+#             */
-/*   Updated: 2023/08/09 12:21:15 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/19 14:52:53 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_in_set_str(char *s, char **set)
 {
-	if (s == NULL || set == NULL || *set == NULL)
+	if (s == NULL || set == NULL)
 		return (FALSE);
 	while (*set)
 	{
