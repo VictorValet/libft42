@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 14:56:19 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/19 15:49:50 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/10/24 12:16:15 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	new_buffer(int fd, char *buffer, char **line, int *i)
 	int		bytes_read;
 	char	*temp_line;
 
+	ft_bzero(buffer, BUFFER_SIZE + 1);
 	bytes_read = read(fd, buffer, BUFFER_SIZE);
 	if (bytes_read == 0)
 		return (0);
@@ -24,9 +25,8 @@ int	new_buffer(int fd, char *buffer, char **line, int *i)
 	{
 		free(*line);
 		*line = NULL;
-		return (bytes_read != 0);
+		return (1);
 	}
-	buffer[bytes_read] = 0;
 	temp_line = (char *)ft_calloc(ft_strlen(*line) + BUFFER_SIZE, sizeof(char));
 	if (temp_line == NULL)
 	{
