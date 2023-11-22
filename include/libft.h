@@ -6,7 +6,7 @@
 /*   By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 13:41:25 by vvalet            #+#    #+#             */
-/*   Updated: 2023/10/10 16:12:17 by vvalet           ###   ########.fr       */
+/*   Updated: 2023/11/22 10:06:46 by vvalet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,12 @@
 
 # define HEX_MIN "0123456789abcdef"
 # define HEX_MAJ "0123456789ABCDEF"
-# define FALSE 0
-# define TRUE 1
+
+typedef enum e_bool
+{
+	FALSE,
+	TRUE,
+}	t_bool;
 
 typedef struct s_list
 {

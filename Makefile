@@ -6,137 +6,128 @@
 #    By: vvalet <vvalet@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/02 18:36:20 by aminjauw          #+#    #+#              #
-#    Updated: 2023/10/09 16:48:41 by vvalet           ###   ########.fr        #
+#    Updated: 2023/11/22 10:43:40 by vvalet           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	libft.a
+NAME		=	libft.a
 
-#--------------------------COLORS------------------------------------------------
+#------------------------------------PATH--------------------------------------
 
-RED			=	\x1b[31m
+INCLUDE		=	include/
 
-YELLOW		=	\x1b[33m
+OBJS_PATH	=	objs/
 
-GREEN		=	\x1b[32m
+#---------------------------------COMPILATION----------------------------------
 
-WHI			=	\x1b[0m
+CC			= 	cc
 
-BOLD		= 	\x1b[1m
+FLAGS	=	-Wall -Wextra -Werror -I${INCLUDE}
 
-BOLD_OFF	=	\x1b[21m
-																				
-#--------------------------PATH-------------------------------------------------
+#---------------------------------SOURCE FILES---------------------------------
 
-INCLUDE	=	include/
+SRCS		=	ft_atoi.c\
+				ft_bzero.c\
+				ft_calloc.c\
+				ft_isalnum.c\
+				ft_isalpha.c\
+				ft_isascii.c\
+				ft_isdigit.c\
+				ft_isprint.c\
+				ft_isspace.c\
+				ft_itoa.c\
+				ft_memchr.c\
+				ft_memcmp.c\
+				ft_memcpy.c\
+				ft_memmove.c\
+				ft_memset.c\
+				ft_putchar_fd.c\
+				ft_putendl_fd.c\
+				ft_putstr_fd.c\
+				ft_putnbr_fd.c\
+				ft_split.c\
+				ft_strchr.c\
+				ft_strdup.c\
+				ft_striteri.c\
+				ft_strjoin.c\
+				ft_strjoins.c\
+				ft_strlcat.c\
+				ft_strlcpy.c\
+				ft_strlen.c\
+				ft_strmapi.c\
+				ft_strncmp.c\
+				ft_strnstr.c\
+				ft_strrchr.c\
+				ft_strtrim.c\
+				ft_substr.c\
+				ft_tolower.c\
+				ft_toupper.c\
+				ft_lstadd_back_bonus.c\
+				ft_lstadd_front_bonus.c\
+				ft_lstclear_bonus.c\
+				ft_lstdelone_bonus.c\
+				ft_lstiter_bonus.c\
+				ft_lstlast_bonus.c\
+				ft_lstmap_bonus.c\
+				ft_lstnew_bonus.c\
+				ft_lstsize_bonus.c\
+				ft_ar_len.c\
+				ft_ar_dup.c\
+				ft_ar_addone.c\
+				ft_ar_delone.c\
+				ft_ar_replace.c\
+				ft_ar_tolist.c\
+				ft_ar_clear.c\
+				ft_abs.c\
+				ft_char_count.c\
+				ft_in_set_char.c\
+				ft_in_set_str.c\
+				ft_sign.c\
+				ft_nb_len.c\
+				ft_printf/ft_convert.c\
+				ft_printf/ft_printf.c\
+				ft_printf/ft_putchar_value_fd.c\
+				ft_printf/ft_putmem_hex_fd.c\
+				ft_printf/ft_putnbr_value_fd.c\
+				ft_printf/ft_putstr_value_fd.c\
+				ft_printf/ft_putui_fd.c\
+				ft_printf/ft_putui_hex_fd.c\
+				ft_fprintf/ft_convertfd.c\
+				ft_fprintf/ft_fprintf.c\
+				get_next_line/get_next_line_utils.c\
+				get_next_line/get_next_line.c
 
-#--------------------------SOURCES FILES----------------------------------------
+#-----------------------------------OBJECTS------------------------------------
 
-SRCS	=	ft_atoi.c \
-			ft_bzero.c \
-			ft_calloc.c \
-			ft_isalnum.c \
-			ft_isalpha.c \
-			ft_isascii.c \
-			ft_isdigit.c \
-			ft_isprint.c \
-			ft_isspace.c \
-			ft_itoa.c \
-			ft_memchr.c \
-			ft_memcmp.c \
-			ft_memcpy.c \
-			ft_memmove.c \
-			ft_memset.c \
-			ft_putchar_fd.c \
-			ft_putendl_fd.c \
-			ft_putstr_fd.c \
-			ft_putnbr_fd.c \
-			ft_split.c \
-			ft_strchr.c \
-			ft_strdup.c \
-			ft_striteri.c \
-			ft_strjoin.c \
-			ft_strjoins.c \
-			ft_strlcat.c \
-			ft_strlcpy.c \
-			ft_strlen.c \
-			ft_strmapi.c \
-			ft_strncmp.c \
-			ft_strnstr.c \
-			ft_strrchr.c \
-			ft_strtrim.c \
-			ft_substr.c \
-			ft_tolower.c \
-			ft_toupper.c \
-			ft_lstadd_back_bonus.c \
-			ft_lstadd_front_bonus.c \
-			ft_lstclear_bonus.c \
-			ft_lstdelone_bonus.c \
-			ft_lstiter_bonus.c \
-			ft_lstlast_bonus.c \
-			ft_lstmap_bonus.c \
-			ft_lstnew_bonus.c \
-			ft_lstsize_bonus.c \
-			ft_ar_len.c \
-			ft_ar_dup.c \
-			ft_ar_addone.c \
-			ft_ar_delone.c \
-			ft_ar_replace.c \
-			ft_ar_tolist.c \
-			ft_ar_clear.c \
-			ft_abs.c \
-			ft_char_count.c \
-			ft_in_set_char.c \
-			ft_in_set_str.c \
-			ft_sign.c \
-			ft_nb_len.c\
-			ft_printf/ft_convert.c \
-			ft_printf/ft_printf.c \
-			ft_printf/ft_putchar_value_fd.c \
-			ft_printf/ft_putmem_hex_fd.c \
-			ft_printf/ft_putnbr_value_fd.c \
-			ft_printf/ft_putstr_value_fd.c \
-			ft_printf/ft_putui_fd.c \
-			ft_printf/ft_putui_hex_fd.c \
-			ft_fprintf/ft_convertfd.c \
-			ft_fprintf/ft_fprintf.c \
-			get_next_line/get_next_line_utils.c \
-			get_next_line/get_next_line.c
+OBJS_FILES	=	${SRCS:.c=.o}
 
-#--------------------------COMPILATION------------------------------------------
+OBJS		=	${addprefix ${OBJS_PATH}, ${OBJS_FILES}} 
 
-CC		=	cc
+#------------------------------------RULES-------------------------------------
 
-FLAGS	=	-Wall -Wextra -Werror -g
+all: ${NAME}
 
-#--------------------------OBJECTS----------------------------------------------
+${OBJS_PATH}:
+	mkdir -p ${OBJS_PATH}
+	mkdir -p ${OBJS_PATH}ft_printf/
+	mkdir -p ${OBJS_PATH}ft_fprintf/
+	mkdir -p ${OBJS_PATH}get_next_line/
 
-OBJS	= 	${SRCS:.c=.o}
+${OBJS_PATH}%.o: %.c
+	${CC} ${FLAGS} -c $< -o $@
 
-#--------------------------RULES-----------------------------------------------
-
-all:		${NAME}
-
-%.o : %.c
-	@printf "$(YELLOW)Generating $(NAME) objects... %-33.33s\r$(WHI)" $@
-	@$(CC) $(FLAGS) -c -I$(INCLUDE) $< -o $@
-
-${NAME}:	${OBJS}
-	@printf "$(YELLOW)Linking %-33.33s\r$(WHI)" $@
+${NAME}: ${OBJS_PATH} ${OBJS}
+	@echo "ar rcs ${NAME} OBJS"
 	@ar rcs ${NAME} ${OBJS}
 
 clean:
-	@echo "$(RED)Deleting libft objects...$(WHI)"
+	@echo "rm -f OBJS"
 	@rm -f ${OBJS}
+	rm -Rf ${OBJS_PATH}
 
-fclean:
-	@rm -f ${OBJS}
-	@echo "$(RED)Deleting libft executables...$(WHI)"
-	@rm -f ${NAME}
+fclean: clean
+	rm -f ${NAME}
 
-test: all
-	@$(CC) $(FLAGS) $(NAME) main.c
+re: fclean all
 
-re:	fclean all
-
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re
